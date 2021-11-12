@@ -1,0 +1,32 @@
+server:
+  servlet:
+    context-path: /
+  port: 9003
+
+spring:
+  application:
+    name: offcnpe_controller
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/offcnpe?characterEncoding=utf-8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+  redis:
+    host: 192.168.217.117
+    port: 6379
+    password: 123456
+  servlet:
+    multipart:
+      max-file-size: 2000000
+dubbo:
+  protocol:
+    name: dubbo
+    port: 20881
+  registry:
+    address: zookeeper://192.168.217.117:2181
+    timeout: 10000

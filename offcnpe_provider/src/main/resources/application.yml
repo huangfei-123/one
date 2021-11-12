@@ -1,0 +1,44 @@
+#\u7AEF\u53E3  \u8BBF\u95EE\u8DEF\u5F84
+server:
+  port: 9002
+  servlet:
+    context-path: /
+
+#spring\u5E94\u7528\u540D\u79F0
+spring:
+  application:
+    name: offcnpe_provider
+    #\u6570\u636E\u6E90\u914D\u7F6E
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/offcnpe?characterEncoding=utf-8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  #mybatis-plus
+mybatis-plus:
+  configuration:
+    #\u5F00\u542F\u9A7C\u5CF0\u6807\u8BC6
+    map-underscore-to-camel-case: true
+    #\u63A7\u5236\u53F0\u663E\u793Asql\u8BED\u53E5
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    #\u903B\u8F91\u5220\u9664
+    db-config:
+      logic-not-delete-value: 1
+      logic-delete-value: 0
+      #\u52A0\u8F7D\u6211\u4EEC\u7684xml\u6587\u4EF6
+  mapper-locations: classpath:/mappers/xml/*.xml
+  type-aliases-package: com.offcn.pojo
+#dubbo\u7AEF\u53E3\u548C\u540D\u79F0
+dubbo:
+  protocol:
+    name: dubbo
+    port: 20880
+  registry:
+    address: zookeeper://192.168.217.117:2181
+    timeout: 10000
+  #\u626B\u63CF\u6211\u4EECservice\u6CE8\u89E3
+  scan:
+    base-packages: com.offcn.service

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.offcn.mapper.OrderMapper">
+    <select id="countOrderByDate" resultType="_int">
+        select count(id) from t_order where orderDate=#{date}
+    </select>
+
+    <select id="countOrdersByDateBetween" resultType="_int">
+        select count(id) from t_order where
+        <![CDATA[
+        orderDate>=#{startDate} and orderDate<=#{endDate}
+]]>
+    </select>
+</mapper>

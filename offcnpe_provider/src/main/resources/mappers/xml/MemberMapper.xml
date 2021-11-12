@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.offcn.mapper.MemberMapper">
+    <select id="countByDate" resultType="_int">
+        select count(id) from t_member where regTime=#{date}
+    </select>
+
+    <select id="countByDateBetween" resultType="_int">
+        select count(id) from t_member where
+        <![CDATA[
+        regTime >=#{startTime} and regTime<=#{endTime}
+]]>
+    </select>
+</mapper>
